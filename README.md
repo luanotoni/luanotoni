@@ -44,8 +44,8 @@ I'm **Luan Otoni de Oliveira**, straight outta Brazil 🇧🇷
 
 ## 💻 Tech Stuff I Play With
 
-- 💡 Languages: Python (my favorite snake 🐍), Java, JavaScript, PHP, HTML, CSS  
-- 🛠️ Databases: MySQL — because data needs a cozy home 🏡  
+- 💡 Languages: Python, Java, JavaScript, PHP, HTML, CSS  
+- 🛠️ Databases: MySQL
 - 🐧 OS: Ubuntu Linux, Proxmox — living that terminal life 💻  
 - ☁️ DevOps Vibes: automating all the boring stuff so I can focus on the cool things  
 
