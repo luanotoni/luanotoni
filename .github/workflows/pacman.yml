@@ -2,22 +2,36 @@ name: Generate Pacman Contribution Graph
 
 on:
   schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
+    - cron: "0 0 * * *" # todo dia à meia-noite
+  workflow_dispatch: # permite rodar manualmente
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
+      # Checkout do teu repositório
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate Pacman SVG
-        uses: Platane/animated-pacman-github-contribution-graph@v1.0.0
+      # Gera o SVG com o Pacman (modo claro)
+      - name: Generate Pacman SVG (light mode)
+        uses: Platane/pacman-contribution-graph@v3
         with:
           github_user_name: lnoliver96
           output_path: output/pacman-contribution-graph.svg
+          color: "yellow"
+          background: "white"
 
+      # Gera o SVG com o Pacman (modo escuro)
+      - name: Generate Pacman SVG (dark mode)
+        uses: Platane/pacman-contribution-graph@v3
+        with:
+          github_user_name: lnoliver96
+          output_path: output/pacman-contribution-graph-dark.svg
+          color: "yellow"
+          background: "black"
+
+      # Faz commit e push do resultado
       - name: Commit and push changes
         uses: EndBug/add-and-commit@v9
         with:
@@ -25,3 +39,4 @@ jobs:
           author_email: github-actions@github.com
           message: "Generate Pacman Contribution Graph"
           add: "output/*"
+          push: true
