@@ -16,7 +16,7 @@ jobs:
       - name: Generate Pacman Contribution Graph
         uses: Platane/snk@v3
         with:
-          github_user_name: ${{ github.repository_owner }}
+          github_user_name: lnoliver96
           outputs: |
             ./output/pacman-contribution-graph.svg
             ./output/pacman-contribution-graph-dark.svg
