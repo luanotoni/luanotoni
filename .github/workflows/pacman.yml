@@ -2,29 +2,35 @@ name: Generate Pacman Contribution Graph
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Atualiza a cada hora
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Generate Pacman Contribution Graph
-        uses: Platane/snk@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          github_user_name: lnoliver96
-          outputs: |
-            ./output/pacman-contribution-graph.svg
-            ./output/pacman-contribution-graph-dark.svg
+          node-version: "20"
 
-      - name: Push generated SVG
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Pacman graph
+        run: node index.js
+
+      - name: Commit and push changes
         uses: EndBug/add-and-commit@v9
         with:
-          author_name: github-actions
-          author_email: github-actions@github.com
-          message: 'Generate Pacman Contribution Graph'
-          add: 'output/*.svg'
+          author_name: "github-actions"
+          author_email: "github-actions@github.com"
+          message: "Generate Pacman Contribution Graph"
+          add: "generated"
+          push: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
