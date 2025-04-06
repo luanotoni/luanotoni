@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.postimg.cc/pd4HNxwk/iconeluan.gif" width="150" />
+  <img src="https://i.postimg.cc/pd4HNxwk/iconeluan.gif" width="300" />
 </p>
 
 <p align="center">
